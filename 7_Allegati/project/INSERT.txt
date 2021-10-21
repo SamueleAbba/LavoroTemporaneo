@@ -1,0 +1,34 @@
+In utente
+
+INSERT INTO utente(email, passwordHash, nomeRuolo) 
+VALUES('samuele.abba@samtrevano.ch', '4acebef29d98e2b58085d7481c92130b33d5df6b', 'amministratore');
+
+INSERT INTO utente(email, passwordHash, nomeRuolo) 
+VALUES('miro.joos@samtrevano.ch', 'fde400aa5aa198ae590a8b244df23fa5ef77aeb4', 'datore');
+
+INSERT INTO utente(email, passwordHash, nomeRuolo) 
+VALUES('gioele.cavallo@samtrevano.ch', '7ba6879f8ff82b7ad5d52600199a4cbe9af800ed', 'lavoratore');
+
+INSERT INTO utente(email, passwordHash, nomeRuolo) 
+VALUES('gioele.zanetti@samtrevano.ch', '7ba6879f8ff82b7ad5d52600199a4cbe9af800ed', 'datore');
+
+INSERT INTO utente(email, passwordHash, nomeRuolo) 
+VALUES('andrea.curti@samtrevano.ch', 'fdb87dfd199045af7165780b11640b83768a0d57', 'lavoratore');
+
+****************************************************************************************************
+In lavoro
+
+INSERT INTO lavoro(id, datore_email, lavoratore_email, titolo, descrizione, tariffaOraria, occupato, scaduto, oreDiLavoro) 
+VALUES(1, 'miro.joos@samtrevano.ch', 'gioele.cavallo@samtrevano.ch', 'Primo Lavoro', 'È il primo lavoro', 10, 1, 0, 1);
+
+INSERT INTO lavoro(id, datore_email, lavoratore_email, titolo, descrizione, tariffaOraria, occupato, scaduto, oreDiLavoro) 
+VALUES(2, 'miro.joos@samtrevano.ch', 'andrea.curti@samtrevano.ch', 'Secondo Lavoro', 'È il secondo lavoro', 20, 1, 0, 2);
+
+INSERT INTO lavoro(id, datore_email, lavoratore_email, titolo, descrizione, tariffaOraria, occupato, scaduto, oreDiLavoro) 
+VALUES(3, 'miro.joos@samtrevano.ch', 'samuele.abba@samtrevano.ch', 'Terzo Lavoro', 'È il terzo lavoro', 30, 0, 0, 3);
+
+INSERT INTO lavoro(id, datore_email, lavoratore_email, titolo, descrizione, tariffaOraria, occupato, scaduto, oreDiLavoro) 
+VALUES(4, 'gioele.zanetti@samtrevano.ch', 'gioele.cavallo@samtrevano.ch', 'Quarto Lavoro', 'È il quarto lavoro', 20, 1, 0, 2);
+
+INSERT INTO lavoro(id, datore_email, lavoratore_email, titolo, descrizione, tariffaOraria, occupato, scaduto, oreDiLavoro) 
+VALUES(5, 'gioele.zanetti@samtrevano.ch', 'andrea.curti@samtrevano.ch', 'Quinto Lavoro', 'È il quinto lavoro', 10, 1, 0, 1);
