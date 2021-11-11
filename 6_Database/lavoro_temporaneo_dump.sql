@@ -130,7 +130,7 @@ CREATE TABLE `utente` (
 
 LOCK TABLES `utente` WRITE;
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-INSERT INTO `utente` VALUES ('andrea.curti@samtrevano.ch','fdb87dfd199045af7165780b11640b83768a0d57','lavoratore'),('damian.campesi@samtrevano.ch','$2y$10$hvN0Cx.25PKjfN2qMa0x0OAlnhOPXG.HOD6IOHgXQXvRTD9D54l.y','datore'),('dennis.donofrio@samtrevano.ch','e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855','lavoratore'),('gioele.cavallo@samtrevano.ch','7ba6879f8ff82b7ad5d52600199a4cbe9af800ed','lavoratore'),('gioele.zanetti@samtrevano.ch','7ba6879f8ff82b7ad5d52600199a4cbe9af800ed','datore'),('luca.fumasoli@samtrevano.ch','e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855','datore'),('miro.joos@samtrevano.ch','fde400aa5aa198ae590a8b244df23fa5ef77aeb4','datore'),('samuele.abba@samtrevano.ch','4acebef29d98e2b58085d7481c92130b33d5df6b','amministratore');
+INSERT INTO `utente` VALUES ('andrea.curti@samtrevano.ch','033b54379f35a3a7864555e840dc4c54a59cdee842cf134f3a9e008d86265657','lavoratore'),('damian.campesi@samtrevano.ch','b605bb1fe6ac82bf21633d396c93fed480c2647eb1b6a86ce2fc45ae99327fc1','datore'),('dennis.donofrio@samtrevano.ch','033b54379f35a3a7864555e840dc4c54a59cdee842cf134f3a9e008d86265657','lavoratore'),('gioele.cavallo@samtrevano.ch','a5fd322d7b96dd875ed907d12c0883ace02938314dd6cd9c8eabbd0027794b8c','lavoratore'),('gioele.zanetti@samtrevano.ch','a5fd322d7b96dd875ed907d12c0883ace02938314dd6cd9c8eabbd0027794b8c','datore'),('luca.fumasoli@samtrevano.ch','65dba5ba3abd51f93865c31508f29129f1f9946acdf8a4293f23e55377bfde97','datore'),('miro.joos@samtrevano.ch','4d61fefcf6ea734eaa0de4e7c150f1d075ce9b6b6da2a3f189a51be8c240bc11','datore'),('samuele.abba@samtrevano.ch','6239b479b97a15a5a494351afcc22b5b85627f37250649713c0d6f4d1d10100a','amministratore');
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -143,4 +143,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-28 18:19:25
+-- Dump completed on 2021-11-07 16:34:31

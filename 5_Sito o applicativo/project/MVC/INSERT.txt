@@ -1,21 +1,3 @@
-In utente
-
-INSERT INTO utente(email, passwordHash, nomeRuolo) 
-VALUES('samuele.abba@samtrevano.ch', '4acebef29d98e2b58085d7481c92130b33d5df6b', 'amministratore');
-
-INSERT INTO utente(email, passwordHash, nomeRuolo) 
-VALUES('miro.joos@samtrevano.ch', 'fde400aa5aa198ae590a8b244df23fa5ef77aeb4', 'datore');
-
-INSERT INTO utente(email, passwordHash, nomeRuolo) 
-VALUES('gioele.cavallo@samtrevano.ch', '7ba6879f8ff82b7ad5d52600199a4cbe9af800ed', 'lavoratore');
-
-INSERT INTO utente(email, passwordHash, nomeRuolo) 
-VALUES('gioele.zanetti@samtrevano.ch', '7ba6879f8ff82b7ad5d52600199a4cbe9af800ed', 'datore');
-
-INSERT INTO utente(email, passwordHash, nomeRuolo) 
-VALUES('andrea.curti@samtrevano.ch', 'fdb87dfd199045af7165780b11640b83768a0d57', 'lavoratore');
-
-****************************************************************************************************
 In lavoro
 
 INSERT INTO lavoro(id, datore_email, lavoratore_email, titolo, descrizione, tariffaOraria, occupato, scaduto, oreDiLavoro) 
