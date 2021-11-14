@@ -29,7 +29,7 @@
 			<h3>Lavori Offerti</h3>
 
 			<!-- per testare le altre pagine  -->
-			<h6><a href="<?php echo URL?>DatoriDiLavoro">pagina datori di lavoro</a></h6>
+			<!--<h6><a href="<?php echo URL?>DatoriDiLavoro">pagina datori di lavoro</a></h6>-->
 			<!-- fine test per le altre pagine-->
 
 		</div>

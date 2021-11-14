@@ -7,11 +7,17 @@ class DatoriDiLavoro extends Controller{
     }
     
     function index(){
-        require 'application/models/datoriDiLavoro_model.php';
-        $model = new DatoriDiLavoro_Model();
-        $data = $model->getLavoriDatoriDiLavoro();
-        $this->view->data = $data;
-        $this->view->render("paginaDatoriDiLavoro/index");
+        require 'application/controller/session.php';
+        $session = new Session_model();
+        if($session->isLogged()){
+            require 'application/models/datoriDiLavoro_model.php';
+            $model = new DatoriDiLavoro_Model();
+            $data = $model->getLavoriDatoriDiLavoro();
+            $this->view->data = $data;
+            $this->view->render("paginaDatoriDiLavoro/index");
+        }else{
+            header('Location: '.URL."Accesso");
+        }
     }
 
     function modifica($i){
@@ -38,7 +44,20 @@ class DatoriDiLavoro extends Controller{
         header('Location: '.URL."DatoriDiLavoro");
     }
 
-function aggiungiOffertaDiLavoro(){ /*Location();*/ }
+    function esegui($i){
+        if(isset($_POST['M'])){
+            $this->modifica($i);
+        }elseif(isset($_POST['E'])){
+            $this->elimina($i);
+        }
+    }
+
+    function esci(){
+        session_destroy();
+        header('Location: '.URL."Accesso");
+    }
+
+    function aggiungiOffertaDiLavoro(){ /*Location();*/ }
     
 }
 

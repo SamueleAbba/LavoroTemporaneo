@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // carico il file di configurazione
 require 'application/config/config.php';
 

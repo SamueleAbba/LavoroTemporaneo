@@ -13,9 +13,7 @@ class Registrazione extends Controller{
     }
 
 	function reRender(){
-        require 'application/models/accesso_model.php';
-        $model = new Accesso_Model();
-        $this->view->render("accesso/index");
+        header("Location: ".URL."Accesso");
     }
 
     function test(){

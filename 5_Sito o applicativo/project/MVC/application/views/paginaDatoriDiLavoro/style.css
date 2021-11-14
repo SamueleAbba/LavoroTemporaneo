@@ -4,15 +4,10 @@ body{
 a{
     text-decoration: none;
 }
-.main{
-    margin-left: 10%;
-    margin-right: 10%;
-}
-.main .top_center{
-    width: 100%;
-    padding: 16px;
-    margin: 1px;
-    border: 1px solid black;
+.header{
+    position: relative;
+    overflow: hidden;
+    border: 2px solid black;
 }
 .topnav_left, .topnav_center, .topnav_right{
     display: inline-block;
@@ -20,14 +15,26 @@ a{
     margin: 1px;
     border: 1px solid black;
 }
+.topnav_center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -51%);
+}
 .topnav_left{
     float: left;
 }
 .topnav_right{
     float: right;
 }
-.header{
-    border: 2px solid black;
+.main{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.main .top_center{
+    padding: 16px;
+    margin: 1px;
+    border: 1px solid black;
 }
 table, td, th{  
     border: 1px solid black;

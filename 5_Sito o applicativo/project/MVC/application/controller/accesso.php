@@ -13,9 +13,7 @@ class Accesso extends Controller{
     }
 
 	function reRender(){
-        require 'application/models/registrazione_model.php';
-        $model = new Registrazione_Model();
-        $this->view->render("registrazione/index");
+		header("Location: ".URL."Registrazione");
     }
 
     function test(){
@@ -57,6 +55,9 @@ class Accesso extends Controller{
 			require 'application/models/accesso_model.php';
         	$model = new Accesso_Model();
         	$model->openSession($email, $password);
+			if(strcmp($_SESSION['nomeRuolo'], 'datore') == 0){
+				header('Location: '.URL."DatoriDiLavoro");
+			}
 		}else{
 			echo "Email: $emailError<br>";
 			echo "Password: $passwordError";

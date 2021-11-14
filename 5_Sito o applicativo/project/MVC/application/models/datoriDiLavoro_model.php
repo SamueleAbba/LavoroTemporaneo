@@ -5,7 +5,7 @@ class DatoriDiLavoro_Model extends Model{
     function __construct(){}
 
     function getLavoriDatoriDiLavoro(){
-        $emailUser = "miro.joos@samtrevano.ch"/*$_SESSION['emailUser']*/;
+        $emailUser = $_SESSION['email'];
         require 'application/controller/connettion.php';
         $sql = "SELECT id, datore_email, lavoratore_email, titolo, descrizione, tariffaOraria, occupato, scaduto, oreDiLavoro FROM lavoro WHERE datore_email='$emailUser'";
         $result = $conn->query($sql);//dbconnect::connect()->query($sql);
@@ -24,7 +24,8 @@ class DatoriDiLavoro_Model extends Model{
 
     function eliminaOffertaDiLavoro($id){
         require 'application/controller/connettion.php';
-        $sql = "DELETE * FROM lavoro WHERE id='$id'";
+        $sql = "DELETE FROM lavoro 
+        WHERE id='$id'";
         $result = $conn->query($sql);
         return $result;
 		$result->close();
