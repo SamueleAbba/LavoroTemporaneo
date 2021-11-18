@@ -27,8 +27,10 @@
     <main class="main">
 			<div align="center">
 				<div class="top_center">
-					<button name="aggiungiLavoro" style="width:100%; cursor: pointer;" onclick="document.location='<?php echo URL.'DatoriDiLavoro/aggiungiOffertaDiLavoro'?>'">Aggiungi offerta di lavoro</button>
-    			</div>
+					<form method="POST" action="<?php echo URL;?>DatoriDiLavoro/aggiungiOffertaDiLavoro">
+						<button name="aggiungiLavoro" style="width:100%; cursor: pointer;">Aggiungi offerta di lavoro</button>
+					</form>
+				</div>
 	    	</div>
 			<div align="center">
 				<div class="top_center">

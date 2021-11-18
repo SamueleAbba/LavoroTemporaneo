@@ -57,6 +57,10 @@ class Accesso extends Controller{
         	$model->openSession($email, $password);
 			if(strcmp($_SESSION['nomeRuolo'], 'datore') == 0){
 				header('Location: '.URL."DatoriDiLavoro");
+			}else if(strcmp($_SESSION['nomeRuolo'], 'lavoratore') == 0){
+				header('Location: '.URL."Lavoratori");
+			}else if(strcmp($_SESSION['nomeRuolo'], 'amministratore') == 0){
+				header('Location: '.URL."Amministratori");
 			}
 		}else{
 			echo "Email: $emailError<br>";

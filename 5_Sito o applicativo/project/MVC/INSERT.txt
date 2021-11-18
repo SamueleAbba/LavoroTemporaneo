@@ -1,16 +1,1 @@
-In lavoro
-
-INSERT INTO lavoro(id, datore_email, lavoratore_email, titolo, descrizione, tariffaOraria, occupato, scaduto, oreDiLavoro) 
-VALUES(1, 'miro.joos@samtrevano.ch', 'gioele.cavallo@samtrevano.ch', 'Primo Lavoro', 'È il primo lavoro', 10, 1, 0, 1);
-
-INSERT INTO lavoro(id, datore_email, lavoratore_email, titolo, descrizione, tariffaOraria, occupato, scaduto, oreDiLavoro) 
-VALUES(2, 'miro.joos@samtrevano.ch', 'andrea.curti@samtrevano.ch', 'Secondo Lavoro', 'È il secondo lavoro', 20, 1, 0, 2);
-
-INSERT INTO lavoro(id, datore_email, lavoratore_email, titolo, descrizione, tariffaOraria, occupato, scaduto, oreDiLavoro) 
-VALUES(3, 'miro.joos@samtrevano.ch', 'samuele.abba@samtrevano.ch', 'Terzo Lavoro', 'È il terzo lavoro', 30, 0, 0, 3);
-
-INSERT INTO lavoro(id, datore_email, lavoratore_email, titolo, descrizione, tariffaOraria, occupato, scaduto, oreDiLavoro) 
-VALUES(4, 'gioele.zanetti@samtrevano.ch', 'gioele.cavallo@samtrevano.ch', 'Quarto Lavoro', 'È il quarto lavoro', 20, 1, 0, 2);
-
-INSERT INTO lavoro(id, datore_email, lavoratore_email, titolo, descrizione, tariffaOraria, occupato, scaduto, oreDiLavoro) 
-VALUES(5, 'gioele.zanetti@samtrevano.ch', 'andrea.curti@samtrevano.ch', 'Quinto Lavoro', 'È il quinto lavoro', 10, 1, 0, 1);
+INSERT INTO lavoro VALUES('miro.joos@samtrevano.ch', 'gioele.cavallo@samtrevano.ch', 'Primo Lavoro', 'È il primo lavoro', 10, 1, 0, 1);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

@@ -9,8 +9,9 @@ class Index extends Controller{
     function index(){
         require 'application/models/index_model.php';
         $model = new Index_Model();
+        $data = $model->run();
+        $this->view->data = $data;
         $this->view->render("index/index");
-        $model->run();
     }
 
 }

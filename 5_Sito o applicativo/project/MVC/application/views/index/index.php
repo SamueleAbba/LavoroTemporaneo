@@ -28,10 +28,37 @@
 		<div class="main" align="center">
 			<h3>Lavori Offerti</h3>
 
-			<!-- per testare le altre pagine  -->
-			<!--<h6><a href="<?php echo URL?>DatoriDiLavoro">pagina datori di lavoro</a></h6>-->
-			<!-- fine test per le altre pagine-->
-
+			
+			<?php if($this->data->num_rows > 0){ ?>
+				<table>
+				<tr>
+					<th style="display: none"> id </th>
+					<th> datore </th>
+					<th> lavoratore </th>
+					<th> titolo </th>
+					<th> descrizione </th>
+					<th> tariffaOraria </th>
+					<th> occupato </th>
+					<th> scaduto </th>
+					<th> oreDiLavoro </th>
+				</tr>
+				<?php while($row = $this->data->fetch_assoc()){ ?>
+					<tr>
+						<td style="display: none"><?php echo $row['id']; ?></td>
+						<td><?php echo $row['datore_email']; ?></td>
+						<td><?php echo $row['lavoratore_email']; ?></td>
+						<td><?php echo $row['titolo']; ?></td>
+						<td><?php echo $row['descrizione']; ?></td>
+						<td><?php echo $row['tariffaOraria']; ?></td>
+						<td><?php echo $row['occupato']; ?></td>
+						<td><?php echo $row['scaduto']; ?></td>
+						<td><?php echo $row['oreDiLavoro']; ?></td>
+					</tr>
+				<?php } ?>
+				</table>
+			<?php } else { ?>
+				<?php echo "0 risultati";?>
+			<?php } ?>
 		</div>
 	</main>
 

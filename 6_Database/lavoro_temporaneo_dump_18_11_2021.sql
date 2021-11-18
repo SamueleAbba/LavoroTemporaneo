@@ -74,7 +74,7 @@ CREATE TABLE `lavoro` (
 
 LOCK TABLES `lavoro` WRITE;
 /*!40000 ALTER TABLE `lavoro` DISABLE KEYS */;
-INSERT INTO `lavoro` VALUES (1,'miro.joos@samtrevano.ch','gioele.cavallo@samtrevano.ch','Primo Lavoro','È il primo lavoro',10,1,0,1),(2,'miro.joos@samtrevano.ch','andrea.curti@samtrevano.ch','Secondo Lavoro','È il secondo lavoro',20,1,0,2),(3,'miro.joos@samtrevano.ch','samuele.abba@samtrevano.ch','Terzo Lavoro','È il terzo lavoro',30,0,0,3),(4,'gioele.zanetti@samtrevano.ch','gioele.cavallo@samtrevano.ch','Quarto Lavoro','È il quarto lavoro',20,1,0,2),(5,'gioele.zanetti@samtrevano.ch','andrea.curti@samtrevano.ch','Quinto Lavoro','È il quinto lavoro',10,1,0,1);
+INSERT INTO `lavoro` VALUES (1,'miro.joos@samtrevano.ch','gioele.cavallo@samtrevano.ch','Primo Lavoro','È il primo lavoro',10,1,0,1),(2,'miro.joos@samtrevano.ch','gioele.cavallo@samtrevano.ch','Secondo Lavoro','È il secondo lavoro',20,1,0,2),(3,'miro.joos@samtrevano.ch','samuele.abba@samtrevano.ch','Terzo Lavoro','È il terzo lavoro',30,0,0,3),(4,'gioele.zanetti@samtrevano.ch','gioele.cavallo@samtrevano.ch','Quarto Lavoro','È il quarto lavoro',20,1,0,2),(5,'gioele.zanetti@samtrevano.ch','andrea.curti@samtrevano.ch','Quinto Lavoro','È il quinto lavoro',10,1,0,1);
 /*!40000 ALTER TABLE `lavoro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,6 +106,7 @@ CREATE TABLE `lavoro_proposta` (
 
 LOCK TABLES `lavoro_proposta` WRITE;
 /*!40000 ALTER TABLE `lavoro_proposta` DISABLE KEYS */;
+INSERT INTO `lavoro_proposta` VALUES ('2001-01-01',1,'andrea.curti@samtrevano.ch','Richiesta per il lavoro1','mi assumete?','');
 /*!40000 ALTER TABLE `lavoro_proposta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,4 +144,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-07 16:34:31
+-- Dump completed on 2021-11-18 19:40:49
