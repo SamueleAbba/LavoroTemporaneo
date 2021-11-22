@@ -86,7 +86,7 @@ DROP TABLE IF EXISTS `lavoro_proposta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lavoro_proposta` (
-  `data` date NOT NULL,
+  `data` varchar(20) NOT NULL,
   `lavoro_id` int(11) NOT NULL,
   `lavoratore_email` varchar(50) NOT NULL,
   `titolo` varchar(25) NOT NULL,
@@ -106,7 +106,7 @@ CREATE TABLE `lavoro_proposta` (
 
 LOCK TABLES `lavoro_proposta` WRITE;
 /*!40000 ALTER TABLE `lavoro_proposta` DISABLE KEYS */;
-INSERT INTO `lavoro_proposta` VALUES ('2001-01-01',1,'andrea.curti@samtrevano.ch','Richiesta per il lavoro1','mi assumete?','');
+INSERT INTO `lavoro_proposta` VALUES ('2021-11-22 19:31:10',3,'andrea.curti@samtrevano.ch','Titolo di default','Descrizione di default',' ');
 /*!40000 ALTER TABLE `lavoro_proposta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,4 +144,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-18 19:40:49
+-- Dump completed on 2021-11-22 19:34:11
