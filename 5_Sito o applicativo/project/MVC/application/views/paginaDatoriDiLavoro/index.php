@@ -75,5 +75,40 @@
 					<?php } ?>
     			</div>
 			</div>
+			<div align="center">
+				<div class="top_center">
+					<h3 style="width:100%;">Vedi tutti i lavori</h3>
+    			</div>
+			</div>
+			<?php if($this->allData->num_rows > 0){ ?>
+				<table>
+				<tr>
+					<th style="display: none"> id </th>
+					<th> datore </th>
+					<th> lavoratore </th>
+					<th> titolo </th>
+					<th> descrizione </th>
+					<th> tariffaOraria </th>
+					<th> occupato </th>
+					<th> scaduto </th>
+					<th> oreDiLavoro </th>
+				</tr>
+				<?php while($row = $this->allData->fetch_assoc()){ ?>
+					<tr>
+						<td style="display: none"><?php echo $row['id']; ?></td>
+						<td><?php echo $row['datore_email']; ?></td>
+						<td><?php echo $row['lavoratore_email']; ?></td>
+						<td><?php echo $row['titolo']; ?></td>
+						<td><?php echo $row['descrizione']; ?></td>
+						<td><?php echo $row['tariffaOraria']; ?></td>
+						<td><?php echo $row['occupato']; ?></td>
+						<td><?php echo $row['scaduto']; ?></td>
+						<td><?php echo $row['oreDiLavoro']; ?></td>
+					</tr>
+				<?php } ?>
+				</table>
+			<?php } else { ?>
+				<?php echo "0 risultati";?>
+			<?php } ?>
     </main>
 </body>

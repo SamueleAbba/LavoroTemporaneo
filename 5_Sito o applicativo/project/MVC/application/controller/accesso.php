@@ -61,6 +61,8 @@ class Accesso extends Controller{
 				header('Location: '.URL."Lavoratori");
 			}else if(strcmp($_SESSION['nomeRuolo'], 'amministratore') == 0){
 				header('Location: '.URL."Amministratori");
+			}else{
+				header('Location: '.URL."Accesso");
 			}
 		}else{
 			echo "Email: $emailError<br>";

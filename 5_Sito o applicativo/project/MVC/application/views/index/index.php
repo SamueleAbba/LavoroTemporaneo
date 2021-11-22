@@ -27,7 +27,6 @@
 	<main>
 		<div class="main" align="center">
 			<h3>Lavori Offerti</h3>
-
 			
 			<?php if($this->data->num_rows > 0){ ?>
 				<table>

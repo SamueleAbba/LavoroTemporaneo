@@ -14,6 +14,8 @@ class Lavoratori extends Controller{
             $model = new Lavoratori_Model();
             $data = $model->getRischiesteLavori();
             $this->view->data = $data;
+            $allData = $model->getLavoriTotali();
+            $this->view->allData = $allData;
             $this->view->render("paginaLavoratori/index");
         }else{
             header('Location: '.URL."Accesso");
@@ -54,7 +56,48 @@ class Lavoratori extends Controller{
         header('Location: '.URL."Accesso");
     }
 
-    function aggiungiRichiestaDiLavoro(){ /*Location();*/ }
+    function aggiungiRichiestaDiLavoro($id){
+        $this->view->id = $id;
+        $this->view->render("aggiungiRichiesta/index");
+    }
+
+    function aggiungi(){
+        if(!empty($_POST['titolo'])){
+			$titolo = $this->test_input($_POST['titolo']);
+		}else{
+			$titolo = "Titolo di default";
+		}
+
+        if(!empty($_POST['descrizione'])){
+			$descrizione = $this->test_input($_POST['descrizione']);
+		}else{
+			$descrizione = "Descrizione di default";
+		}
+
+        if(!empty($_POST['allegati'])){
+			$allegati = $this->test_input($_POST['allegati']);
+		}else{
+			$allegati = " ";
+		}
+
+        $offertaDiLavoro = $_POST['offertaDiLavoro'];
+
+        $email = $_POST['email'];
+
+        $data = date("Y-m-d-H-i-sa");
+
+        require 'application/models/lavoratori_model.php';
+        $model = new Lavoratori_Model();
+        $model->aggiungiLavoro($data, $offertaDiLavoro, $email, $titolo, $descrizione, $allegati);
+        header('Location: '.URL."Lavoratori");
+    }
+
+    function test_input($data) {
+		$data = trim($data);
+		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		return $data;
+	}
     
 }
 
