@@ -43,6 +43,28 @@ class Amministratori_Model extends Model{
         return $result;
     }
 
+    function calcolaFattura($id){
+        require 'application/controller/connection.php';
+        $sql = "SELECT oreDiLavoro, tariffaOraria FROM lavoro
+        WHERE id='$id'";
+        $result = $conn->query($sql);
+        return $result;
+    }
+
+    function creaFattura($data, $datore_email, $lavoratore_email, $totale){
+        require 'application/controller/connection.php';
+        $sql = "INSERT INTO fattura VALUES ('$data','$datore_email','$lavoratore_email','$totale')";
+        $result = $conn->query($sql);
+        return $result;
+    }
+
+    function getFatture(){
+        require 'application/controller/connection.php';
+        $sql = "SELECT * FROM fattura";
+        $result = $conn->query($sql);
+        return $result;
+    }
+
 }
 
 ?>

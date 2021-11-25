@@ -53,7 +53,39 @@ class Amministratori extends Controller{
         header('Location: '.URL."Accesso");
     }
 
-    function creaFatturazione(){ /*Location();*/ }
+    function creaFattura(){
+        require 'application/models/amministratori_model.php';
+        $model = new Amministratori_Model();
+        $data = $model->getLavoriScaduti();
+        $this->view->data = $data;
+        $allData = $model->getFatture();
+        $this->view->allData = $allData;
+        $this->view->render("aggiungiFattura/index");
+    }
+
+    function calcolaFattura($id, $datore_email, $lavoratore_email){
+        $totale = 0;
+        require 'application/models/amministratori_model.php';
+        $model = new Amministratori_Model();
+        $result = $model->calcolaFattura($id);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $totale = $row["oreDiLavoro"]*$row["tariffaOraria"];
+            }
+        } else {
+            $totale = 0;
+        }
+        $totale = $totale + (($totale*10)/100);
+        $data = date("Y-m-d H-i-sa");
+        $model->creaFattura($data, $datore_email, $lavoratore_email, $totale);
+        $model->eliminaLavoro($id);
+        header('Location: '.URL."Amministratori/creaFattura");
+    }
+
+    function VisualizzaTutteLeFatture(){
+
+        //header('Location: '.URL."Amministratori");
+    }
 
     function visualizzaLavoriConFiltro(){
         require 'application/models/amministratori_model.php';

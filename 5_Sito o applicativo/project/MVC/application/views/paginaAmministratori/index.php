@@ -28,7 +28,7 @@
 			<div align="center">
 				<div class="top_center">
 					<button name="visualizzaFattura" style="width:100%; cursor: pointer;" 
-					onclick="document.location='<?php echo URL.'Amministratori/creaFatturazione'?>'">Crea fatturazione</button>
+					onclick="document.location='<?php echo URL.'Amministratori/creaFattura'?>'">Crea fattura</button>
     			</div>
 	    	</div>
 			<div align="center">

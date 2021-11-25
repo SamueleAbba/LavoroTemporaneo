@@ -14,7 +14,7 @@ class DatoriDiLavoro extends Controller{
             $model = new DatoriDiLavoro_Model();
             $data = $model->getLavoriDatoriDiLavoro();
             $this->view->data = $data;
-            $allData = $model->getLavoriTotali();
+            $allData = $model->getOfferteDiLavoro();
             $this->view->allData = $allData;
             $this->view->render("paginaDatoriDiLavoro/index");
         }else{
@@ -52,6 +52,29 @@ class DatoriDiLavoro extends Controller{
             $this->modifica($i);
         }elseif(isset($_POST['E'])){
             $this->elimina($i);
+        }
+    }
+
+    function accettaRichiesta($id, $data, $email){
+        require 'application/models/datoriDiLavoro_model.php';
+        $model = new DatoriDiLavoro_Model();
+        $model->accettaRichiestaDiLavoro($id, $email, $data);
+        header('Location: '.URL."DatoriDiLavoro");
+    }
+
+    function rifiutaRichiesta($id, $data, $email){
+        require 'application/models/datoriDiLavoro_model.php';
+        $model = new DatoriDiLavoro_Model();
+        $model->rifiutaRichiestaDiLavoro($id, $data, $email);
+        echo $id." ".$data." ".$email;
+        header('Location: '.URL."DatoriDiLavoro");
+    }
+
+    function accettaORifiutaRichiestaDiLavoro($id, $data, $email){
+        if(isset($_POST['A'])){
+            $this->accettaRichiesta($id, $data, $email);
+        }elseif(isset($_POST['R'])){
+            $this->rifiutaRichiesta($id, $data, $email);
         }
     }
 

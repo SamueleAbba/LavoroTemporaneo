@@ -67,37 +67,39 @@
 					<h3 style="width:100%;">Vedi tutti i lavori</h3>
     			</div>
 			</div>
-			<?php if($this->allData->num_rows > 0){ $i=1;?>
-				<table>
-				<tr>
-					<th style="display: none"> id </th>
-					<th> datore </th>
-					<th> lavoratore </th>
-					<th> titolo </th>
-					<th> descrizione </th>
-					<th> tariffaOraria </th>
-					<th> occupato </th>
-					<th> scaduto </th>
-					<th> oreDiLavoro </th>
-					<th> fai una richiesta </th>
-				</tr>
-				<?php while($row = $this->allData->fetch_assoc()){ ?>
-					<tr><form method="POST" action="<?php echo URL;?>Lavoratori/aggiungiRichiestaDiLavoro/<?php echo $row['id']?>">
-						<td style="display: none"><?php echo $row['id']; ?></td>
-						<td><?php echo $row['datore_email']; ?></td>
-						<td><?php echo $row['lavoratore_email']; ?></td>
-						<td><?php echo $row['titolo']; ?></td>
-						<td><?php echo $row['descrizione']; ?></td>
-						<td><?php echo $row['tariffaOraria']; ?></td>
-						<td><?php echo $row['occupato']; ?></td>
-						<td><?php echo $row['scaduto']; ?></td>
-						<td><?php echo $row['oreDiLavoro']; ?></td>
-						<td><input style="width: 100%" type='submit' value='fai una richiesta per (<?php echo $i?>)' name='F'></td>
-					</form></tr>
-				<?php $i++; } ?>
-				</table>
-			<?php } else { ?>
-				<?php echo "0 risultati";?>
-			<?php } ?>
+			<div align="center">
+				<?php if($this->allData->num_rows > 0){ $i=1;?>
+					<table>
+					<tr>
+						<th style="display: none"> id </th>
+						<th> datore </th>
+						<th> lavoratore </th>
+						<th> titolo </th>
+						<th> descrizione </th>
+						<th> tariffaOraria </th>
+						<th> occupato </th>
+						<th> scaduto </th>
+						<th> oreDiLavoro </th>
+						<th> fai una richiesta </th>
+					</tr>
+					<?php while($row = $this->allData->fetch_assoc()){ ?>
+						<tr><form method="POST" action="<?php echo URL;?>Lavoratori/aggiungiRichiestaDiLavoro/<?php echo $row['id']?>">
+							<td style="display: none"><?php echo $row['id']; ?></td>
+							<td><?php echo $row['datore_email']; ?></td>
+							<td><?php echo $row['lavoratore_email']; ?></td>
+							<td><?php echo $row['titolo']; ?></td>
+							<td><?php echo $row['descrizione']; ?></td>
+							<td><?php echo $row['tariffaOraria']; ?></td>
+							<td><?php echo $row['occupato']; ?></td>
+							<td><?php echo $row['scaduto']; ?></td>
+							<td><?php echo $row['oreDiLavoro']; ?></td>
+							<td><input style="width: 100%" type='submit' value='fai una richiesta per (<?php echo $i?>)' name='F'></td>
+						</form></tr>
+					<?php $i++; } ?>
+					</table>
+				<?php } else { ?>
+					<?php echo "0 risultati";?>
+				<?php } ?>
+			</div>
     </main>
 </body>
