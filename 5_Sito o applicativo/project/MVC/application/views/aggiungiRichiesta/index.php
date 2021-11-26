@@ -43,8 +43,8 @@
 			<input name="allegati" type="file" size="50">
 			<br>
 
-			<label>OffertaDiLavoro</label><br>
-			<input class="disabled" name="offertaDiLavoro" type="number" size="50" value="<?php echo $this->id?>" readonly="true">
+			<label>OffertaDiLavoroId</label><br>
+			<input class="disabled" name="id" type="number" size="50" value="<?php echo $this->id?>" readonly="true">
 			<br>
 
 			<br>

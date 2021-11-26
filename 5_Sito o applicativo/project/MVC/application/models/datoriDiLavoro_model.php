@@ -55,7 +55,7 @@ class DatoriDiLavoro_Model extends Model{
     function rifiutaRichiestaDiLavoro($id, $data, $email){
         require 'application/controller/connection.php';
         $data = substr($data,0, 10)." ".substr($data,10, 8);
-        $sql = "DELETE FROM lavoro_proposta
+        $sql = "DELETE FROM `lavoro_proposta` 
         WHERE data='$data'";
         $result = $conn->query($sql);
         return $result;
@@ -63,10 +63,17 @@ class DatoriDiLavoro_Model extends Model{
 
     function aggiungiLavoro($email, $titolo, $descrizione, $tariffaOraria, $oreDiLavoro){
         require 'application/controller/connection.php';
-        $id = ($this->getLavoriTotali()->num_rows) + 1;
-        $sql2 = "INSERT INTO lavoro VALUES($id,'$email','samuele.abba@samtrevano.ch','$titolo','$descrizione',$tariffaOraria,0, 0,$oreDiLavoro)";
+        $sql2 = "INSERT INTO lavoro(datore_email, lavoratore_email, titolo, descrizione, tariffaOraria, occupato, scaduto, oreDiLavoro)
+        VALUES('$email','samuele.abba@samtrevano.ch','$titolo','$descrizione',$tariffaOraria,0, 0,$oreDiLavoro)";
         $result2 = $conn->query($sql2);
         return $result2;
+    }
+
+    function lavoroNonAncoraEsistente($email, $titolo){
+        require 'application/controller/connection.php';
+        $sql = "SELECT * FROM lavoro WHERE datore_email='$email' AND titolo='$titolo'";
+        $result = $conn->query($sql);
+        return $result;
     }
 
 }

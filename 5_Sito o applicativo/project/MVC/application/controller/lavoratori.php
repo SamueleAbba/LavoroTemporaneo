@@ -14,7 +14,7 @@ class Lavoratori extends Controller{
             $model = new Lavoratori_Model();
             $data = $model->getRischiesteLavori();
             $this->view->data = $data;
-            $allData = $model->getLavoriTotali();
+            $allData = $model->getLavoriNonOccupati();
             $this->view->allData = $allData;
             $this->view->render("paginaLavoratori/index");
         }else{
@@ -65,13 +65,13 @@ class Lavoratori extends Controller{
         if(!empty($_POST['titolo'])){
 			$titolo = $this->test_input($_POST['titolo']);
 		}else{
-			$titolo = "Titolo di default";
+			$titolo = "Richiesta per il lavoro";
 		}
 
         if(!empty($_POST['descrizione'])){
 			$descrizione = $this->test_input($_POST['descrizione']);
 		}else{
-			$descrizione = "Descrizione di default";
+			$descrizione = "Descrizione della richiesta per il lavoro";
 		}
 
         if(!empty($_POST['allegati'])){
@@ -80,15 +80,18 @@ class Lavoratori extends Controller{
 			$allegati = " ";
 		}
 
-        $offertaDiLavoro = $_POST['offertaDiLavoro'];
-
+        $id = $_POST['id'];
         $email = $_POST['email'];
-
-        $data = date("Y-m-d-H-i-sa");
+        $data = null;
 
         require 'application/models/lavoratori_model.php';
         $model = new Lavoratori_Model();
-        $model->aggiungiLavoro($data, $offertaDiLavoro, $email, $titolo, $descrizione, $allegati);
+        $result = $model->lavoroNonAncoraEsistente($id, $email);
+        if($result->num_rows == 0){
+            $model->aggiungiLavoro($data, $id, $email, $titolo, $descrizione, $allegati);
+        }else{
+            echo "richiesta già effettuata";
+        }
         header('Location: '.URL."Lavoratori");
     }
 

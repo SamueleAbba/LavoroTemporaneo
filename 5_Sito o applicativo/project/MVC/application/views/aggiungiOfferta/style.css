@@ -29,6 +29,7 @@ a{
     float: right;
 }
 .disabled{
+    border-style: none;
     background: lightgray;
     cursor: default;
 }

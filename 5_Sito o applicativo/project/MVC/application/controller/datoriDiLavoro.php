@@ -66,7 +66,6 @@ class DatoriDiLavoro extends Controller{
         require 'application/models/datoriDiLavoro_model.php';
         $model = new DatoriDiLavoro_Model();
         $model->rifiutaRichiestaDiLavoro($id, $data, $email);
-        echo $id." ".$data." ".$email;
         header('Location: '.URL."DatoriDiLavoro");
     }
 
@@ -116,10 +115,16 @@ class DatoriDiLavoro extends Controller{
             $oreDiLavoro = 0;
         }
 
+        $email = $_POST['email'];
+
         require 'application/models/datoriDiLavoro_model.php';
         $model = new DatoriDiLavoro_Model();
-        $email = $_POST['email'];
-        $model->aggiungiLavoro($email, $titolo, $descrizione, $tariffaOraria, $oreDiLavoro);
+        $result = $model->lavoroNonAncoraEsistente($email, $titolo);
+        if($result->num_rows == 0){
+            $model->aggiungiLavoro($email, $titolo, $descrizione, $tariffaOraria, $oreDiLavoro);
+        }else{
+            echo "lavoro già effettuato";
+        }
         header('Location: '.URL."DatoriDiLavoro");
     }
 

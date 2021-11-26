@@ -48,3 +48,8 @@ th, td{
     width: 12.5%;
     padding: 5px;
 }
+.disabled{
+    border-style: none;
+    background: lightgray;
+    cursor: default;
+}

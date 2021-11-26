@@ -56,7 +56,7 @@
 				<?php } ?>
 				</table>
 			<?php } else { ?>
-				<?php echo "0 risultati";?>
+				<?php echo "Al momento non ci sono risultati";?>
 			<?php } ?>
 		</div>
 	</main>

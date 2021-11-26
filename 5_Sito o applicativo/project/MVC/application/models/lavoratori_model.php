@@ -11,9 +11,17 @@ class Lavoratori_Model extends Model{
         return $result;
     }
 
-    function getLavoriTotali(){
+    function getLavori(){
         require 'application/controller/connection.php';
         $sql = "SELECT * FROM lavoro";
+        $result = $conn->query($sql);
+        return $result;
+    }
+
+    function getLavoriNonOccupati(){
+        require 'application/controller/connection.php';
+        $sql = "SELECT * FROM lavoro
+        WHERE occupato='0'";
         $result = $conn->query($sql);
         return $result;
     }
@@ -42,12 +50,19 @@ class Lavoratori_Model extends Model{
         return $result;
     }
 
-    function aggiungiLavoro($data, $offertaDiLavoro, $email, $titolo, $descrizione, $allegati){
+    function aggiungiLavoro($data, $id, $email, $titolo, $descrizione, $allegati){
         require 'application/controller/connection.php';
         $date = new DateTime();
         $data = $date->format('Y-m-d H:i:s');
-        $sql = "INSERT INTO `lavoro_proposta`(`data`, `lavoro_id`, `lavoratore_email`, `titolo`, `descrizione`, `allegati`)
-        VALUES ('$data','$offertaDiLavoro','$email','$titolo','$descrizione','$allegati')";
+        $sql = "INSERT INTO `lavoro_proposta`(`data`, `lavoro_id`, `lavoratore_email`, `titolo`, `descrizione`, `allegati`) 
+        VALUES ('$data','$id','$email','$titolo','$descrizione','$allegati')";
+        $result = $conn->query($sql);
+        return $result;
+    }
+
+    function lavoroNonAncoraEsistente($id, $email){
+        require 'application/controller/connection.php';
+        $sql = "SELECT * FROM lavoro_proposta WHERE lavoro_id='$id' AND lavoratore_email='$email'";
         $result = $conn->query($sql);
         return $result;
     }

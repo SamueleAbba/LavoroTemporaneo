@@ -91,7 +91,7 @@
 						<?php $i++; } ?>
 					</table>
 				<?php }else{ ?>
-					<?php echo "non ci sono fatture"; ?>
+					<?php echo "non ci sono fatture da visualizzare"; ?>
 				<?php } ?>
     		</div>
 		</div>
