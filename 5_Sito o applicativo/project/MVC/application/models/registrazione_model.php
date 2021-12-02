@@ -9,19 +9,18 @@ class Registrazione_Model extends Model{
 		$result = $conn;
 
 		/*
-		// da verificare la conferma mail 
-		// nell'if && $invioEmail === TRUE
+		  Attenzione se si è sulla macchina 
+		 virtuale mettere Scheda di rete: NAT
 		*/
 		$to_email = $email;
 		$subject = "Registrazione al lavoro temporaneo";
 		$message = "Complimenti, la sua registrazione è avvenuta con successo";
 		$headers = 'From: LavoroTemporaneoSAMT@gmail.com';
-		//$invioEmail = mail($to_email, $subject, $message, $headers) ? TRUE : FALSE;
 
 		$password = hash('sha256', $password);
 		$sql = "INSERT INTO utente(email, passwordHash, nomeRuolo) VALUES('$email', '$password', '$ruolo')";
 
-		if ($this->extractData($email, $password, $ruolo)/*&& mail($to_email, $subject, $message, $headers) */) {
+		if ($this->extractData($email, $password, $ruolo) && mail($to_email, $subject, $message, $headers)) {
 			$result->query($sql);
 			echo "New user created successfully";
 		} else {

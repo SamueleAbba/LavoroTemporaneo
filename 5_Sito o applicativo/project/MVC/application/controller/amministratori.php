@@ -75,10 +75,17 @@ class Amministratori extends Controller{
         } else {
             $totale = 0;
         }
-        $totale = $totale + (($totale*10)/100);
-        $data = date("Y-m-d H-i-sa");
-        $model->creaFattura($data, $datore_email, $lavoratore_email, $totale);
+        $totale1 = $totale + (($totale*10)/100);
+        $data1 = date("Y-m-d H-i-sa");
+        $model->creaFattura($data1, $datore_email, "samuele.abba@samtrevano.ch", $totale1);
+
+        $totale2 = $totale;
+        $date_now1 = new DateTime();
+        $data2 = date_add($date_now1, date_interval_create_from_date_string("1 seconds"));
+        $data2 = date_format($data2,"Y-m-d H-i-s");
+        $model->creaFattura($data2, "samuele.abba@samtrevano.ch", $lavoratore_email, $totale2);
         $model->eliminaLavoro($id);
+
         header('Location: '.URL."Amministratori/creaFattura");
     }
 

@@ -6,7 +6,7 @@ class DatoriDiLavoro_Model extends Model{
 
     function getOfferteDiLavoro(){
         require 'application/controller/connection.php';
-        $sql = "SELECT * FROM lavoro_proposta WHERE 
+        $sql = "SELECT * FROM lavoro_proposta WHERE archiviato='0' AND
         lavoro_id IN (SELECT id from lavoro WHERE datore_email='$_SESSION[email]')";
         $result = $conn->query($sql);
         return $result;
@@ -35,9 +35,9 @@ class DatoriDiLavoro_Model extends Model{
         return $result;
     }
 
-    function eliminaOffertaDiLavoro($id){
+    function archiviaOffertaDiLavoro($id){
         require 'application/controller/connection.php';
-        $sql = "DELETE FROM lavoro 
+        $sql = "UPDATE lavoro SET scaduto='1'
         WHERE id='$id'";
         $result = $conn->query($sql);
         return $result;

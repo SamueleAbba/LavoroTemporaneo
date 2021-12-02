@@ -86,7 +86,7 @@
 							<td><input style="width: 100%" type="text" value="<?php echo $row['data']; ?>" name='data'></td>
 							<td><input style="width: 100%" type="text" value="<?php echo $row['datore_email']; ?>" name='datore_email'></td>
 							<td><input style="width: 100%" type="text" value="<?php echo $row['lavoratore_email']; ?>" name='lavoratore_email'></td>
-							<td><input style="width: 100%" type="text" value="<?php echo $row['totale']; ?>" name='totale'></td>
+							<td><input style="width: 100%" type="text" value="<?php echo $row['totale']; ?> Fr" name='totale'></td>
 						</tr>
 						<?php $i++; } ?>
 					</table>

@@ -39,19 +39,19 @@ class DatoriDiLavoro extends Controller{
         header('Location: '.URL."DatoriDiLavoro");
     }
 
-    function elimina($i){
+    function archivia($i){
         require 'application/models/datoriDiLavoro_model.php';
         $model = new DatoriDiLavoro_Model();
         $id = $_POST['id'];
-        $model->eliminaOffertaDiLavoro($id);
+        $model->archiviaOffertaDiLavoro($id);
         header('Location: '.URL."DatoriDiLavoro");
     }
 
     function esegui($i){
         if(isset($_POST['M'])){
             $this->modifica($i);
-        }elseif(isset($_POST['E'])){
-            $this->elimina($i);
+        }elseif(isset($_POST['A'])){
+            $this->archivia($i);
         }
     }
 

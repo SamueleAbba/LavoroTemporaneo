@@ -25,21 +25,28 @@ class Lavoratori extends Controller{
     function modifica($i){
         require 'application/models/lavoratori_model.php';
         $model = new Lavoratori_Model();
-        $data = $_POST['data'];
+        $data = date('Y-m-d H:i:s',strtotime($_POST['data']));
         $lavoro_id = $_POST['lavoro_id'];
         $lavoratore_email = $_POST['lavoratore_email'];
         $titolo = $_POST['titolo'];
         $descrizione = $_POST['descrizione'];
         $allegati = $_POST['allegati'];
-        $model->modificaRichiestaDiLavoro($data, $lavoro_id, $lavoratore_email, $titolo, $descrizione, $allegati);
+        $archiviato = $_POST['archiviato'];
+        $model->modificaRichiestaDiLavoro($data,$lavoro_id,$lavoratore_email,$titolo,$descrizione,$allegati,$archiviato);
         header('Location: '.URL."Lavoratori");
     }
 
     function elimina($data){
         require 'application/models/lavoratori_model.php';
         $model = new Lavoratori_Model();
-        $data = $_POST['data'];
-        $model->eliminaRichiestaDiLavoro($data);
+        $data = date('Y-m-d H:i:s',strtotime($_POST['data']));
+        $lavoro_id = $_POST['lavoro_id'];
+        $lavoratore_email = $_POST['lavoratore_email'];
+        $titolo = $_POST['titolo'];
+        $descrizione = $_POST['descrizione'];
+        $allegati = $_POST['allegati'];
+        $archiviato = "1";
+        $model->eliminaRichiestaDiLavoro($data,$lavoro_id,$lavoratore_email,$titolo,$descrizione,$allegati,$archiviato);
         header('Location: '.URL."Lavoratori");
     }
 
@@ -58,6 +65,11 @@ class Lavoratori extends Controller{
 
     function aggiungiRichiestaDiLavoro($id){
         $this->view->id = $id;
+        require 'application/models/lavoratori_model.php';
+        $model = new Lavoratori_Model();
+        $titolo = $model->getTitolo($id);
+        $titolo = $titolo->fetch_assoc();
+        $this->view->titolo = $titolo['titolo'];
         $this->view->render("aggiungiRichiesta/index");
     }
 
@@ -83,12 +95,19 @@ class Lavoratori extends Controller{
         $id = $_POST['id'];
         $email = $_POST['email'];
         $data = null;
+        $archiviato = 0;
 
         require 'application/models/lavoratori_model.php';
         $model = new Lavoratori_Model();
-        $result = $model->lavoroNonAncoraEsistente($id, $email);
+        $result = $model->lavoroNonAncoraEsistente($id, $email, 0);
         if($result->num_rows == 0){
-            $model->aggiungiLavoro($data, $id, $email, $titolo, $descrizione, $allegati);
+            $model->aggiungiLavoro($data,$id,$email,$titolo,$descrizione,$allegati,$archiviato);
+            /*
+            $titoloLavoro = $model->getLavoro($id);
+            $row = $titoloLavoro->fetch_assoc();
+            $titolo = $row['titolo'];
+            $model->inviaEmailDiConferma($email, $titolo);
+            *///verificare l'invio della mail in nat
         }else{
             echo "richiesta già effettuata";
         }

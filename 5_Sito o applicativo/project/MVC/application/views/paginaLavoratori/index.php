@@ -29,23 +29,25 @@
 					<?php if ($this->data->num_rows > 0) { $i=0;?>
 						<table>
 							<tr>
-								<th> data </th>
-								<th> lavoro </th>
-								<th> lavoratore </th>
 								<th> titolo </th>
+								<th> data </th>
+								<th style="display:none;"> lavoro </th>
+								<th> lavoratore </th>
 								<th> descrizione </th>
 								<th> allegati </th>
+								<th style="display:none;"> archiviato </th>
 								<th> modifica </th>
 								<th> elimina </th>
 							</tr>
 							<?php while($row = $this->data->fetch_assoc()) { ?>
 							<tr><form method="POST" action="<?php echo URL;?>Lavoratori/esegui/<?php echo $i;?>">
-								<td><input class="disabled" readonly="true" style="width: 100%" type="text" value="<?php echo $row['data']; ?>" name='data'></td>
-								<td><input class="disabled" readonly="true" style="width: 100%" type="text" value="<?php echo $row['lavoro_id']; ?>" name='lavoro_id'></td>
+								<td><input class="disabled" style="width: 100%" type="text" value="<?php echo $row['titolo']; ?>" name='titolo' readonly="true"></td>
+								<td><input class="disabled" readonly="true" style="width: 100%" type="text" value="<?php echo date('d-m-Y H:i:s',strtotime($row['data'])); ?>" name='data'></td>
+								<td style="display:none;"><input class="disabled" readonly="true" style="width: 100%" type="text" value="<?php echo $row['lavoro_id']; ?>" name='lavoro_id'></td>
 								<td><input class="disabled" readonly="true" style="width: 100%" type="text" value="<?php echo $row['lavoratore_email']; ?>" name='lavoratore_email'></td>
-								<td><input style="width: 100%" type="text" value="<?php echo $row['titolo']; ?>" name='titolo'></td>
 								<td><input style="width: 100%" type="text" value="<?php echo $row['descrizione']; ?>" name='descrizione'></td>
 								<td><input style="width: 100%" type="text" value="<?php echo $row['allegati']; ?>" name='allegati'></td>
+								<td style="display:none;"><input style="width: 100%" type="text" value="<?php echo $row['archiviato']; ?>" name='archiviato'></td>
 								<td><input style="width: 100%" type='submit' value='MODIFICA RICHIESTA (<?php echo $i+1?>)' name='M'></td>
 								<td><input style="width: 100%" type='submit' value='ELIMINA RICHIESTA (<?php echo $i+1?>)' name='E'></td>
 							</form></tr>
@@ -66,28 +68,28 @@
 					<?php if($this->allData->num_rows > 0){ $i=1;?>
 						<table>
 						<tr>
+							<th> titolo </th>
 							<th style="display: none"> id </th>
 							<th> datore </th>
 							<th> lavoratore </th>
-							<th> titolo </th>
 							<th> descrizione </th>
 							<th> tariffaOraria </th>
 							<th> oreDiLavoro </th>
-							<th> occupato </th>
-							<th> scaduto </th>
+							<th style="display: none"> occupato </th>
+							<th style="display: none"> scaduto </th>
 							<th> fai una richiesta </th>
 						</tr>
 						<?php while($row = $this->allData->fetch_assoc()){ ?>
 							<tr><form method="POST" action="<?php echo URL;?>Lavoratori/aggiungiRichiestaDiLavoro/<?php echo $row['id']?>">
+								<td><?php echo $row['titolo']; ?></td>
 								<td style="display: none"><?php echo $row['id']; ?></td>
 								<td><?php echo $row['datore_email']; ?></td>
 								<td><?php echo $row['lavoratore_email']; ?></td>
-								<td><?php echo $row['titolo']; ?></td>
 								<td><?php echo $row['descrizione']; ?></td>
 								<td><?php echo $row['tariffaOraria']; ?></td>
 								<td><?php echo $row['oreDiLavoro']; ?></td>
-								<td><?php echo $row['occupato']; ?></td>
-								<td><?php echo $row['scaduto']; ?></td>
+								<td style="display: none"><?php echo $row['occupato']; ?></td>
+								<td style="display: none"><?php echo $row['scaduto']; ?></td>
 								<td><input style="width: 100%" type='submit' value='fai una richiesta per (<?php echo $i?>)' name='F'></td>
 							</form></tr>
 						<?php $i++; } ?>

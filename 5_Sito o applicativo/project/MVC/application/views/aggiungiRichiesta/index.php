@@ -28,26 +28,23 @@
 		<form method="POST" action='<?php echo URL."Lavoratori/aggiungi"?>'>
 
 			<label>Email</label><br>
-			<input class="disabled" name="email" type="email" size="50" value="<?php echo $_SESSION['email']?>" readonly="true">
+			<input class="disabled" name="email" type="email" size="50" value="<?php echo $_SESSION['email'];?>" readonly="true">
 			<br>
 
 			<label>Titolo</label><br>
-			<input name="titolo" type="text" size="50" value="Titolo di default">
+			<input class="disabled" name="titolo" type="text" size="50" value="<?php echo $this->titolo;?>" readonly="true">
 			<br>
 
 			<label>Descrizione</label><br>
-			<input name="descrizione" type="textarea" size="50" value="Descrizione di default">
+			<input name="descrizione" type="textarea" size="50" value="Descrizione per il <?php echo $this->titolo;?>">
 			<br>
 
 			<label>Allegati</label><br>
-			<input name="allegati" type="file" size="50">
+			<input name="allegati" type="file" size="50" value="Nessun file è ancora stato selezionato">
 			<br>
 
-			<label>OffertaDiLavoroId</label><br>
-			<input class="disabled" name="id" type="number" size="50" value="<?php echo $this->id?>" readonly="true">
-			<br>
-
-			<br>
+			<label style="display:none;">OffertaDiLavoroId</label><br>
+			<input style="display:none;" class="disabled" name="id" type="number" size="50" value="<?php echo $this->id;?>" readonly="true">
 
 			<input name="conferma" type="submit" value="Conferma">
 		</form>
