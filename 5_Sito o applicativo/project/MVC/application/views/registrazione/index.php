@@ -11,7 +11,7 @@
     <header>
 	    <div class="header" align="center">
 		    <div class="topnav_center">
-			    <a id="Title" disabled="true"> Lavoro Temporaneo - form di registrazione</a>
+			    <a id="Title" href="<?php echo URL;?>"> Lavoro Temporaneo - form di registrazione</a>
     		</div>
 	    </div>
     </header>

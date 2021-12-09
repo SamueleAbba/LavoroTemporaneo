@@ -32,7 +32,7 @@
 								<th> titolo </th>
 								<th> data </th>
 								<th style="display:none;"> lavoro </th>
-								<th> lavoratore </th>
+								<th style="display:none;"> lavoratore </th>
 								<th> descrizione </th>
 								<th> allegati </th>
 								<th style="display:none;"> archiviato </th>
@@ -44,7 +44,7 @@
 								<td><input class="disabled" style="width: 100%" type="text" value="<?php echo $row['titolo']; ?>" name='titolo' readonly="true"></td>
 								<td><input class="disabled" readonly="true" style="width: 100%" type="text" value="<?php echo date('d-m-Y H:i:s',strtotime($row['data'])); ?>" name='data'></td>
 								<td style="display:none;"><input class="disabled" readonly="true" style="width: 100%" type="text" value="<?php echo $row['lavoro_id']; ?>" name='lavoro_id'></td>
-								<td><input class="disabled" readonly="true" style="width: 100%" type="text" value="<?php echo $row['lavoratore_email']; ?>" name='lavoratore_email'></td>
+								<td style="display:none;"><input class="disabled" readonly="true" style="width: 100%" type="text" value="<?php echo $row['lavoratore_email']; ?>" name='lavoratore_email'></td>
 								<td><input style="width: 100%" type="text" value="<?php echo $row['descrizione']; ?>" name='descrizione'></td>
 								<td><input style="width: 100%" type="text" value="<?php echo $row['allegati']; ?>" name='allegati'></td>
 								<td style="display:none;"><input style="width: 100%" type="text" value="<?php echo $row['archiviato']; ?>" name='archiviato'></td>
@@ -71,7 +71,7 @@
 							<th> titolo </th>
 							<th style="display: none"> id </th>
 							<th> datore </th>
-							<th> lavoratore </th>
+							<th style="display: none"> lavoratore </th>
 							<th> descrizione </th>
 							<th> tariffaOraria </th>
 							<th> oreDiLavoro </th>
@@ -84,7 +84,7 @@
 								<td><?php echo $row['titolo']; ?></td>
 								<td style="display: none"><?php echo $row['id']; ?></td>
 								<td><?php echo $row['datore_email']; ?></td>
-								<td><?php echo $row['lavoratore_email']; ?></td>
+								<td style="display: none"><?php echo $row['lavoratore_email']; ?></td>
 								<td><?php echo $row['descrizione']; ?></td>
 								<td><?php echo $row['tariffaOraria']; ?></td>
 								<td><?php echo $row['oreDiLavoro']; ?></td>

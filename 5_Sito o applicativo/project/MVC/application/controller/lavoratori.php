@@ -32,7 +32,8 @@ class Lavoratori extends Controller{
         $descrizione = $_POST['descrizione'];
         $allegati = $_POST['allegati'];
         $archiviato = $_POST['archiviato'];
-        $model->modificaRichiestaDiLavoro($data,$lavoro_id,$lavoratore_email,$titolo,$descrizione,$allegati,$archiviato);
+        $model->modificaRichiestaDiLavoro($data,$lavoro_id,$lavoratore_email,
+        $titolo,$descrizione,$allegati,$archiviato);
         header('Location: '.URL."Lavoratori");
     }
 
@@ -46,7 +47,8 @@ class Lavoratori extends Controller{
         $descrizione = $_POST['descrizione'];
         $allegati = $_POST['allegati'];
         $archiviato = "1";
-        $model->eliminaRichiestaDiLavoro($data,$lavoro_id,$lavoratore_email,$titolo,$descrizione,$allegati,$archiviato);
+        $model->modificaRichiestaDiLavoro($data,$lavoro_id,$lavoratore_email,
+        $titolo,$descrizione,$allegati,$archiviato);
         header('Location: '.URL."Lavoratori");
     }
 
@@ -64,13 +66,19 @@ class Lavoratori extends Controller{
     }
 
     function aggiungiRichiestaDiLavoro($id){
-        $this->view->id = $id;
-        require 'application/models/lavoratori_model.php';
-        $model = new Lavoratori_Model();
-        $titolo = $model->getTitolo($id);
-        $titolo = $titolo->fetch_assoc();
-        $this->view->titolo = $titolo['titolo'];
-        $this->view->render("aggiungiRichiesta/index");
+        require 'application/controller/session.php';
+        $session = new Session_model();
+        if($session->isLogged()){
+            $this->view->id = $id;
+            require 'application/models/lavoratori_model.php';
+            $model = new Lavoratori_Model();
+            $titolo = $model->getTitolo($id);
+            $titolo = $titolo->fetch_assoc();
+            $this->view->titolo = $titolo['titolo'];
+            $this->view->render("aggiungiRichiesta/index");
+        }else{
+            header('Location: '.URL."Accesso");
+        }
     }
 
     function aggiungi(){
@@ -79,13 +87,11 @@ class Lavoratori extends Controller{
 		}else{
 			$titolo = "Richiesta per il lavoro";
 		}
-
         if(!empty($_POST['descrizione'])){
 			$descrizione = $this->test_input($_POST['descrizione']);
 		}else{
 			$descrizione = "Descrizione della richiesta per il lavoro";
 		}
-
         if(!empty($_POST['allegati'])){
 			$allegati = $this->test_input($_POST['allegati']);
 		}else{
@@ -99,15 +105,13 @@ class Lavoratori extends Controller{
 
         require 'application/models/lavoratori_model.php';
         $model = new Lavoratori_Model();
-        $result = $model->lavoroNonAncoraEsistente($id, $email, 0);
+        $result = $model->lavoroNonAncoraEsistente($id, $email, $archiviato);
         if($result->num_rows == 0){
             $model->aggiungiLavoro($data,$id,$email,$titolo,$descrizione,$allegati,$archiviato);
-            /*
             $titoloLavoro = $model->getLavoro($id);
             $row = $titoloLavoro->fetch_assoc();
             $titolo = $row['titolo'];
             $model->inviaEmailDiConferma($email, $titolo);
-            *///verificare l'invio della mail in nat
         }else{
             echo "richiesta già effettuata";
         }

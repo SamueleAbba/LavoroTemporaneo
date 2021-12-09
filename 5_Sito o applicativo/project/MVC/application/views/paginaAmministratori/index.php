@@ -59,23 +59,40 @@
 								<th> occupato </th>
 								<th> scaduto </th>
 								<th> oreDiLavoro </th>
+								<th> data </th>
 								<th> modifica </th>
-								<th> elimina </th>
+								<th style="display: none"> elimina </th>
 							</tr>
 							<?php while($row = $this->data->fetch_assoc()) { ?>
-							<tr><form method="POST" action="<?php echo URL;?>Amministratori/esegui/<?php echo $i;?>">
-								<td style="display: none"><input style="width: 100%" type="text" value="<?php echo $row['id']; ?>" name='id'></td>
-								<td><input style="width: 100%" type="text" value="<?php echo $row['datore_email']; ?>" name='datore_email'></td>
-								<td><input style="width: 100%" type="text" value="<?php echo $row['lavoratore_email']; ?>" name='lavoratore_email'></td>
-								<td><input style="width: 100%" type="text" value="<?php echo $row['titolo']; ?>" name='titolo'></td>
-								<td><input style="width: 100%" type="text" value="<?php echo $row['descrizione']; ?>" name='descrizione'></td>
-								<td><input style="width: 100%" type="text" value="<?php echo $row['tariffaOraria']; ?>" name='tariffaOraria'></td>
-								<td><input style="width: 100%" type="text" value="<?php echo $row['occupato']; ?>" name='occupato'></td>
-								<td><input style="width: 100%" type="text" value="<?php echo $row['scaduto']; ?>" name='scaduto'></td>
-								<td><input style="width: 100%" type="text" value="<?php echo $row['oreDiLavoro']; ?>" name='oreDiLavoro'></td>
-								<td><input style="width: 100%" type='submit' value='MODIFICA LAVORO (<?php echo $i+1?>)' name='M'></td>
-								<td><input style="width: 100%" type='submit' value='ELIMINA LAVORO (<?php echo $i+1?>)' name='E'></td>
-							</form></tr>
+								<tr><form method="POST" action="<?php echo URL;?>Amministratori/esegui/<?php echo $i;?>">
+									<?php if($row['archiviato'] == 0){ ?>
+										<td style="display: none"><input style="width: 100%" type="text" value="<?php echo $row['id']; ?>" name='id'></td>
+										<td><input style="width: 100%;" type="text" value="<?php echo $row['datore_email']; ?>" name='datore_email'></td>
+										<td><input style="width: 100%;" type="text" value="<?php echo $row['lavoratore_email']; ?>" name='lavoratore_email'></td>
+										<td><input style="width: 100%;" type="text" value="<?php echo $row['titolo']; ?>" name='titolo'></td>
+										<td><input  style="width: 100%;" type="text" value="<?php echo $row['descrizione']; ?>" name='descrizione'></td>
+										<td><input style="width: 100%;" type="text" value="<?php echo $row['tariffaOraria']; ?>" name='tariffaOraria'></td>
+										<td><input style="width: 100%;" type="text" value="<?php echo $row['occupato']; ?>" name='occupato'></td>
+										<td><input style="width: 100%;" type="text" value="<?php echo $row['scaduto']; ?>" name='scaduto'></td>
+										<td><input style="width: 100%;" type="text" value="<?php echo $row['oreDiLavoro']; ?>" name='oreDiLavoro'></td>
+										<td><input style="width: 100%;" type="text" value="<?php echo date('d-m-Y H:i:s',strtotime($row['data'])); ?>" name='data'></td>
+										<td><input style="width: 100%;" type='submit' value='MODIFICA LAVORO (<?php echo $i+1?>)' name='M'></td>
+										<td style="display: none"><input style="width: 100%" type='submit' value='ELIMINA LAVORO (<?php echo $i+1?>)' name='E'></td>
+									<?php }else{ ?>
+										<td style="display: none"><input style="width: 100%" type="text" value="<?php echo $row['id']; ?>" name='id'></td>
+										<td><input class="disabled" readonly="true" class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['datore_email']; ?>" name='datore_email'></td>
+										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['lavoratore_email']; ?>" name='lavoratore_email'></td>
+										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['titolo']; ?>" name='titolo'></td>
+										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['descrizione']; ?>" name='descrizione'></td>
+										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['tariffaOraria']; ?>" name='tariffaOraria'></td>
+										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['occupato']; ?>" name='occupato'></td>
+										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['scaduto']; ?>" name='scaduto'></td>
+										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['oreDiLavoro']; ?>" name='oreDiLavoro'></td>
+										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo date('d-m-Y H:i:s',strtotime($row['data'])); ?>" name='data'></td>
+										<td><input class="disabled" readonly="true" style="width: 100%;" type='submit' value='MODIFICA LAVORO (<?php echo $i+1?>)' name='M'></td>
+										<td style="display: none"><input style="width: 100%" type='submit' value='ELIMINA LAVORO (<?php echo $i+1?>)' name='E'></td>
+									<?php } ?>
+								</form></tr>
 							<?php $i++; } ?>
 						</table>
 					<?php }else{ ?>

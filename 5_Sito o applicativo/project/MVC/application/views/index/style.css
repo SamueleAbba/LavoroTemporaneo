@@ -9,6 +9,10 @@ a{
     overflow: hidden;
     border: 2px solid black;
 }
+.main{
+    margin-left: 10%;
+    margin-right: 10%;
+}
 .topnav_left, .topnav_center, .topnav_right{
     display: inline-block;
     padding: 16px;

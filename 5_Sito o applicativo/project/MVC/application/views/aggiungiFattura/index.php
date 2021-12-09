@@ -25,6 +25,12 @@
     <br>
 
     <main class="main">
+	<div align="center">
+				<div class="top_center">
+					<button name="visualizzaFattura" style="width:100%; cursor: pointer;" 
+					onclick="document.location='<?php echo URL.'Amministratori/'?>'">Home Amministrazione</button>
+    			</div>
+	    	</div>
 		<div align="center">
 			<div class="top_center">
 				<h3 style="width:100%;">Crea una nuova Fattura</h3>
@@ -44,6 +50,7 @@
 							<th> occupato </th>
 							<th> scaduto </th>
 							<th> oreDiLavoro </th>
+							<th> data </th>
 							<th> crea fattura </th>
 						</tr>
 						<?php while($row = $this->data->fetch_assoc()) { ?>
@@ -57,6 +64,7 @@
 							<td><input style="width: 100%" type="text" value="<?php echo $row['occupato']; ?>" name='occupato'></td>
 							<td><input style="width: 100%" type="text" value="<?php echo $row['scaduto']; ?>" name='scaduto'></td>
 							<td><input style="width: 100%" type="text" value="<?php echo $row['oreDiLavoro']; ?>" name='oreDiLavoro'></td>
+							<td><input style="width: 100%" type="text" value="<?php echo date('d-m-Y H:i:s',strtotime($row['data'])); ?>" name='data'></td>
 							<td><input style="width: 100%" type='submit' value='CALCOLA FATTURAZIONE (<?php echo $i+1?>)' name='M'></td>
 						</form></tr>
 						<?php $i++; } ?>
@@ -83,10 +91,10 @@
 						</tr>
 						<?php while($row = $this->allData->fetch_assoc()) { ?>
 						<tr>
-							<td><input style="width: 100%" type="text" value="<?php echo $row['data']; ?>" name='data'></td>
-							<td><input style="width: 100%" type="text" value="<?php echo $row['datore_email']; ?>" name='datore_email'></td>
-							<td><input style="width: 100%" type="text" value="<?php echo $row['lavoratore_email']; ?>" name='lavoratore_email'></td>
-							<td><input style="width: 100%" type="text" value="<?php echo $row['totale']; ?> Fr" name='totale'></td>
+							<td><input class="disabled" readonly="true" style="width: 100%" type="text" value="<?php echo date('d-m-Y H:i:s',strtotime($row['data'])); ?>" name='data'></td>
+							<td><input class="disabled" readonly="true" style="width: 100%" type="text" value="<?php echo $row['datore_email']; ?>" name='datore_email'></td>
+							<td><input class="disabled" readonly="true" style="width: 100%" type="text" value="<?php echo $row['lavoratore_email']; ?>" name='lavoratore_email'></td>
+							<td><input class="disabled" readonly="true" style="width: 100%" type="text" value="<?php echo $row['totale']; ?> Fr" name='totale'></td>
 						</tr>
 						<?php $i++; } ?>
 					</table>

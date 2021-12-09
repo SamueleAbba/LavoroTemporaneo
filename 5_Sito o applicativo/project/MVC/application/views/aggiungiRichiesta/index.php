@@ -14,7 +14,7 @@
 				<a id="Email" href="<?php echo URL."DatoriDiLavoro"?>"><?php echo $_SESSION['email']?></a>
 			</div>
 			<div class="topnav_center">
-				<a id="Title" disabled="true"> Lavoro Temporaneo - aggiungi richiesta di lavoro</a>
+				<a id="Title" href="<?php echo URL;?>Lavoratori"> Lavoro Temporaneo - aggiungi richiesta di lavoro</a>
 			</div>
 			<div class="topnav_right">
 				<a id="Esci" href="<?php echo URL."DatoriDiLavoro/esci"?>">LogOff</a>

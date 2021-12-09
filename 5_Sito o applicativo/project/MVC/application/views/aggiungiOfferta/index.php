@@ -14,7 +14,7 @@
 				<a id="Email" href="<?php echo URL."DatoriDiLavoro"?>"><?php echo $_SESSION['email']?></a>
 			</div>
 			<div class="topnav_center">
-				<a id="Title" disabled="true"> Lavoro Temporaneo - aggiungi offerta di lavoro</a>
+				<a id="Title" href="<?php echo URL;?>DatoriDiLavoro"> Lavoro Temporaneo - aggiungi offerta di lavoro</a>
 			</div>
 			<div class="topnav_right">
 				<a id="Esci" href="<?php echo URL."DatoriDiLavoro/esci"?>">LogOff</a>
@@ -32,11 +32,11 @@
 			<br>
 
 			<label>Titolo</label><br>
-			<input name="titolo" type="text" size="50" value="Titolo di default">
+			<input name="titolo" type="text" size="50" value="Titolo">
 			<br>
 
 			<label>Descrizione</label><br>
-			<input name="descrizione" type="textarea" size="50" value="Descrizione di default">
+			<input name="descrizione" type="textarea" size="50" value="Descrizione">
 			<br>
 
 			<label>TariffaOraria</label><br>

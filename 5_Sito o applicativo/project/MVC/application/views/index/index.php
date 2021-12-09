@@ -25,39 +25,44 @@
 	<br>
 	
 	<main>
-		<div class="main" align="center">
-			<h3>Lavori Offerti</h3>
-			
-			<?php if($this->data->num_rows > 0){ ?>
-				<table>
-				<tr>
-					<th style="display: none"> id </th>
-					<th> datore </th>
-					<th> lavoratore </th>
-					<th> titolo </th>
-					<th> descrizione </th>
-					<th> tariffaOraria </th>
-					<th> occupato </th>
-					<th> scaduto </th>
-					<th> oreDiLavoro </th>
-				</tr>
-				<?php while($row = $this->data->fetch_assoc()){ ?>
+		<div align="center">
+			<div class="top_center">
+				<h3 style="width:100%;">Lavori offerti</h3>
+    		</div>
+		</div>
+		<div align="center">
+			<div class="top_center">
+				<?php if($this->data->num_rows > 0){ ?>
+					<table>
 					<tr>
-						<td style="display: none"><?php echo $row['id']; ?></td>
-						<td><?php echo $row['datore_email']; ?></td>
-						<td><?php echo $row['lavoratore_email']; ?></td>
-						<td><?php echo $row['titolo']; ?></td>
-						<td><?php echo $row['descrizione']; ?></td>
-						<td><?php echo $row['tariffaOraria']; ?></td>
-						<td><?php echo $row['occupato']; ?></td>
-						<td><?php echo $row['scaduto']; ?></td>
-						<td><?php echo $row['oreDiLavoro']; ?></td>
+						<th style="display: none"> id </th>
+						<th style="display: none"> datore </th>
+						<th style="display: none"> lavoratore </th>
+						<th> TITOLO </th>
+						<th> DESCRIZIONE </th>
+						<th> TARIFFA ORARIA </th>
+						<th style="display: none"> occupato </th>
+						<th style="display: none"> scaduto </th>
+						<th> ORE DI LAVORO </th>
 					</tr>
+					<?php while($row = $this->data->fetch_assoc()){ ?>
+						<tr>
+							<td style="display: none"><?php echo $row['id']; ?></td>
+							<td style="display: none"><?php echo $row['datore_email']; ?></td>
+							<td style="display: none"><?php echo $row['lavoratore_email']; ?></td>
+							<td><?php echo $row['titolo']; ?></td>
+							<td><?php echo $row['descrizione']; ?></td>
+							<td><?php echo $row['tariffaOraria']; ?> Fr</td>
+							<td style="display: none"><?php echo $row['occupato']; ?></td>
+							<td style="display: none"><?php echo $row['scaduto']; ?></td>
+							<td><?php echo $row['oreDiLavoro']; ?> ora/e</td>
+						</tr>
+					<?php } ?>
+					</table>
+				<?php } else { ?>
+					<?php echo "Al momento non ci sono risultati";?>
 				<?php } ?>
-				</table>
-			<?php } else { ?>
-				<?php echo "Al momento non ci sono risultati";?>
-			<?php } ?>
+			</div>
 		</div>
 	</main>
 

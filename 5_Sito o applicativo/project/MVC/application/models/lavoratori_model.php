@@ -4,16 +4,10 @@ class Lavoratori_Model extends Model{
 
     function __construct(){}
 
-    function getLavoro($id){
+    function getRischiesteLavori(){
+        $emailUser = $_SESSION['email'];
         require 'application/controller/connection.php';
-        $sql = "SELECT * FROM lavoro WHERE id='$id'";
-        $result = $conn->query($sql);
-        return $result;
-    }
-
-    function getLavori(){
-        require 'application/controller/connection.php';
-        $sql = "SELECT * FROM lavoro";
+        $sql = "SELECT * FROM lavoro_proposta WHERE lavoratore_email='$emailUser' AND archiviato='0'";
         $result = $conn->query($sql);
         return $result;
     }
@@ -21,15 +15,7 @@ class Lavoratori_Model extends Model{
     function getLavoriNonOccupati(){
         require 'application/controller/connection.php';
         $sql = "SELECT * FROM lavoro
-        WHERE occupato='0'";
-        $result = $conn->query($sql);
-        return $result;
-    }
-
-    function getRischiesteLavori(){
-        $emailUser = $_SESSION['email'];
-        require 'application/controller/connection.php';
-        $sql = "SELECT * FROM lavoro_proposta WHERE lavoratore_email='$emailUser' AND archiviato='0'";
+        WHERE occupato='0' AND archiviato='0'";
         $result = $conn->query($sql);
         return $result;
     }
@@ -42,8 +28,18 @@ class Lavoratori_Model extends Model{
         return $result;
     }
 
-    function eliminaRichiestaDiLavoro($data,$lavoro_id,$lavoratore_email,$titolo,$descrizione,$allegati,$archiviato){
-        return $this->modificaRichiestaDiLavoro($data,$lavoro_id,$lavoratore_email,$titolo,$descrizione,$allegati,$archiviato);
+    function getTitolo($id){
+        require 'application/controller/connection.php';
+        $sql = "SELECT * FROM lavoro WHERE id='$id' LIMIT 1";
+        $result = $conn->query($sql);
+        return $result;
+    }
+
+    function lavoroNonAncoraEsistente($id, $email, $archiviato){
+        require 'application/controller/connection.php';
+        $sql = "SELECT * FROM lavoro_proposta WHERE lavoro_id='$id' AND lavoratore_email='$email' AND archiviato='$archiviato'";
+        $result = $conn->query($sql);
+        return $result;
     }
 
     function aggiungiLavoro($data,$id,$email,$titolo,$descrizione,$allegati,$archiviato){
@@ -56,16 +52,9 @@ class Lavoratori_Model extends Model{
         return $result;
     }
 
-    function lavoroNonAncoraEsistente($id, $email, $archiviato){
+    function getLavoro($id){
         require 'application/controller/connection.php';
-        $sql = "SELECT * FROM lavoro_proposta WHERE lavoro_id='$id' AND lavoratore_email='$email' AND archiviato='$archiviato'";
-        $result = $conn->query($sql);
-        return $result;
-    }
-
-    function getTitolo($id){
-        require 'application/controller/connection.php';
-        $sql = "SELECT * FROM lavoro WHERE id='$id' LIMIT 1";
+        $sql = "SELECT * FROM lavoro WHERE id='$id'";
         $result = $conn->query($sql);
         return $result;
     }

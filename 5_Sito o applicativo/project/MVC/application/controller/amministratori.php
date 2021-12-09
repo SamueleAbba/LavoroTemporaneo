@@ -28,7 +28,9 @@ class Amministratori extends Controller{
         $occupato = $_POST['occupato'];
         $scaduto = $_POST['scaduto'];
         $oreDiLavoro = $_POST['oreDiLavoro'];
-        $model->modificaLavoro($id, $datore_email, $lavoratore_email, $titolo, $descrizione, $tariffaOraria, $occupato, $scaduto, $oreDiLavoro);
+        $data = $_POST['data'];
+        $model->modificaLavoro($id,$datore_email,$lavoratore_email,$titolo,
+        $descrizione,$tariffaOraria,$occupato,$scaduto,$oreDiLavoro,$data);
         header('Location: '.URL."Amministratori");
     }
 
@@ -54,13 +56,19 @@ class Amministratori extends Controller{
     }
 
     function creaFattura(){
-        require 'application/models/amministratori_model.php';
-        $model = new Amministratori_Model();
-        $data = $model->getLavoriScaduti();
-        $this->view->data = $data;
-        $allData = $model->getFatture();
-        $this->view->allData = $allData;
-        $this->view->render("aggiungiFattura/index");
+        require 'application/controller/session.php';
+        $session = new Session_model();
+        if($session->isLogged()){
+            require 'application/models/amministratori_model.php';
+            $model = new Amministratori_Model();
+            $data = $model->getLavoriScaduti();
+            $this->view->data = $data;
+            $allData = $model->getFatture();
+            $this->view->allData = $allData;
+            $this->view->render("aggiungiFattura/index");
+        }else{
+            header('Location: '.URL."Accesso");
+        }
     }
 
     function calcolaFattura($id, $datore_email, $lavoratore_email){
@@ -75,6 +83,7 @@ class Amministratori extends Controller{
         } else {
             $totale = 0;
         }
+
         $totale1 = $totale + (($totale*10)/100);
         $data1 = date("Y-m-d H-i-sa");
         $model->creaFattura($data1, $datore_email, "samuele.abba@samtrevano.ch", $totale1);
@@ -84,14 +93,10 @@ class Amministratori extends Controller{
         $data2 = date_add($date_now1, date_interval_create_from_date_string("1 seconds"));
         $data2 = date_format($data2,"Y-m-d H-i-s");
         $model->creaFattura($data2, "samuele.abba@samtrevano.ch", $lavoratore_email, $totale2);
+
         $model->eliminaLavoro($id);
 
         header('Location: '.URL."Amministratori/creaFattura");
-    }
-
-    function VisualizzaTutteLeFatture(){
-
-        //header('Location: '.URL."Amministratori");
     }
 
     function visualizzaLavoriConFiltro(){

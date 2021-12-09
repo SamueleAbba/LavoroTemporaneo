@@ -40,7 +40,6 @@ a{
     content: "";
     clear: both;
     display: table;
-    
 }
 .top_centerFilter{
     border: 1px solid black;
@@ -54,6 +53,11 @@ table{
     width: 100%;
 }
 th, td{
-    width: 12.5%;
+    max-width: 10%;
     padding: 5px;
+}
+.disabled{
+    border-style: none;
+    background: lightgray;
+    cursor: default;
 }

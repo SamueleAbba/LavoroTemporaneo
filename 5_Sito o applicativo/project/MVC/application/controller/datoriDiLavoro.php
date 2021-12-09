@@ -34,24 +34,25 @@ class DatoriDiLavoro extends Controller{
         $occupato = $_POST['occupato'];
         $scaduto = $_POST['scaduto'];
         $oreDiLavoro = $_POST['oreDiLavoro'];
-        $model->modificaOffertaDiLavoro($id, $datore_email, $lavoratore_email, $titolo, 
-        $descrizione, $tariffaOraria, $occupato, $scaduto, $oreDiLavoro);
+        $data = $_POST['data'];
+        $model->modificaOffertaDiLavoro($id,$datore_email,$lavoratore_email,
+        $titolo,$descrizione,$tariffaOraria,$occupato,$scaduto,$oreDiLavoro,$data);
         header('Location: '.URL."DatoriDiLavoro");
     }
 
-    function archivia($i){
+    function elimina($i){
         require 'application/models/datoriDiLavoro_model.php';
         $model = new DatoriDiLavoro_Model();
         $id = $_POST['id'];
-        $model->archiviaOffertaDiLavoro($id);
+        $model->eliminaOffertaDiLavoro($id);
         header('Location: '.URL."DatoriDiLavoro");
     }
 
     function esegui($i){
         if(isset($_POST['M'])){
             $this->modifica($i);
-        }elseif(isset($_POST['A'])){
-            $this->archivia($i);
+        }elseif(isset($_POST['E'])){
+            $this->elimina($i);
         }
     }
 
@@ -83,22 +84,26 @@ class DatoriDiLavoro extends Controller{
     }
 
     function aggiungiOffertaDiLavoro(){ 
-        $this->view->render("aggiungiOfferta/index");
+        require 'application/controller/session.php';
+        $session = new Session_model();
+        if($session->isLogged()){
+            $this->view->render("aggiungiOfferta/index");
+        }else{
+            header('Location: '.URL."Accesso");
+        }
     }
 
     function aggiungi(){
 		if(!empty($_POST['titolo'])){
 			$titolo = $this->test_input($_POST['titolo']);
 		}else{
-			$titolo = "Titolo di default";
+			$titolo = "Titolo";
 		}
-
         if(!empty($_POST['descrizione'])){
 			$descrizione = $this->test_input($_POST['descrizione']);
 		}else{
-			$descrizione = "Descrizione di default";
+			$descrizione = "Descrizione";
 		}
-
         if(is_numeric($_POST['tariffaOraria']) && $_POST['tariffaOraria'] > 0 && 
            $_POST['tariffaOraria'] == round($_POST['tariffaOraria'], 0))
         {
@@ -106,7 +111,6 @@ class DatoriDiLavoro extends Controller{
         }else{
             $tariffaOraria = 0;
         }
-
         if(is_numeric($_POST['oreDiLavoro']) && $_POST['oreDiLavoro'] > 0 && 
            $_POST['oreDiLavoro'] == round($_POST['oreDiLavoro'], 0))
         {
@@ -114,9 +118,15 @@ class DatoriDiLavoro extends Controller{
         }else{
             $oreDiLavoro = 0;
         }
-
         $email = $_POST['email'];
 
+        //$titolo
+
+        //$descrizione
+        //$tariffaOraria
+
+        //$oreDiLavoro
+        
         require 'application/models/datoriDiLavoro_model.php';
         $model = new DatoriDiLavoro_Model();
         $result = $model->lavoroNonAncoraEsistente($email, $titolo);

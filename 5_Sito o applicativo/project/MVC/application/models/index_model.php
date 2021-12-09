@@ -6,7 +6,7 @@ class Index_Model extends Model{
 	
     function run(){
       require 'application/controller/connection.php';
-      $sql = "SELECT * FROM lavoro";
+      $sql = "SELECT * FROM lavoro WHERE archiviato='0'";
       $result = $conn->query($sql);
 		  return $result;
     }
