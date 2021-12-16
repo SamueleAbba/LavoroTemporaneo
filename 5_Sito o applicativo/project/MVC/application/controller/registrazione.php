@@ -24,7 +24,6 @@ class Registrazione extends Controller{
 		$email = $_POST["email"];
 		$password = $_POST["password"];
 		$ruolo = $_POST["ruolo"];
-
 		//validation email
 		if(!empty($email)){
 			$email = $this->test_input($email);
@@ -36,7 +35,6 @@ class Registrazione extends Controller{
 		}else{
 			$emailError = "Invalid email format";
 		}
-
 		//validation password
 		if(!empty($password)){
 			$password = $this->test_input($password);
@@ -48,10 +46,8 @@ class Registrazione extends Controller{
 		}else{
 			$passwordError = "Invalid password format";
 		}
-
 		//validation ruolo
 		$ruoloError = "correct";
-
 		//return
 		if(
 			strcmp($emailError,"correct") == 0 &&
@@ -61,6 +57,7 @@ class Registrazione extends Controller{
 			require 'application/models/registrazione_model.php';
         	$model = new Registrazione_Model();
         	$model->insertData($email, $password, $ruolo);
+			header("Location: ".URL."Accesso");
 		}else{
 			echo "Email: $emailError<br>";
 			echo "Password: $passwordError<br>";

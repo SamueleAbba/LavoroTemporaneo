@@ -55,11 +55,11 @@
 								<th> lavoratore </th>
 								<th> titolo </th>
 								<th> descrizione </th>
-								<th> tariffaOraria </th>
+								<th> tariffa oraria </th>
+								<th> ore di lavoro </th>
+								<th> data </th>
 								<th> occupato </th>
 								<th> scaduto </th>
-								<th> oreDiLavoro </th>
-								<th> data </th>
 								<th> modifica </th>
 								<th style="display: none"> elimina </th>
 							</tr>
@@ -72,10 +72,10 @@
 										<td><input style="width: 100%;" type="text" value="<?php echo $row['titolo']; ?>" name='titolo'></td>
 										<td><input  style="width: 100%;" type="text" value="<?php echo $row['descrizione']; ?>" name='descrizione'></td>
 										<td><input style="width: 100%;" type="text" value="<?php echo $row['tariffaOraria']; ?>" name='tariffaOraria'></td>
-										<td><input style="width: 100%;" type="text" value="<?php echo $row['occupato']; ?>" name='occupato'></td>
-										<td><input style="width: 100%;" type="text" value="<?php echo $row['scaduto']; ?>" name='scaduto'></td>
 										<td><input style="width: 100%;" type="text" value="<?php echo $row['oreDiLavoro']; ?>" name='oreDiLavoro'></td>
 										<td><input style="width: 100%;" type="text" value="<?php echo date('d-m-Y H:i:s',strtotime($row['data'])); ?>" name='data'></td>
+										<td><input style="width: 100%;" type="text" value="<?php echo $row['occupato']; ?>" name='occupato'></td>
+										<td><input style="width: 100%;" type="text" value="<?php echo $row['scaduto']; ?>" name='scaduto'></td>
 										<td><input style="width: 100%;" type='submit' value='MODIFICA LAVORO (<?php echo $i+1?>)' name='M'></td>
 										<td style="display: none"><input style="width: 100%" type='submit' value='ELIMINA LAVORO (<?php echo $i+1?>)' name='E'></td>
 									<?php }else{ ?>
@@ -85,10 +85,10 @@
 										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['titolo']; ?>" name='titolo'></td>
 										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['descrizione']; ?>" name='descrizione'></td>
 										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['tariffaOraria']; ?>" name='tariffaOraria'></td>
-										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['occupato']; ?>" name='occupato'></td>
-										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['scaduto']; ?>" name='scaduto'></td>
 										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['oreDiLavoro']; ?>" name='oreDiLavoro'></td>
 										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo date('d-m-Y H:i:s',strtotime($row['data'])); ?>" name='data'></td>
+										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['occupato']; ?>" name='occupato'></td>
+										<td><input class="disabled" readonly="true" style="width: 100%;" type="text" value="<?php echo $row['scaduto']; ?>" name='scaduto'></td>
 										<td><input class="disabled" readonly="true" style="width: 100%;" type='submit' value='MODIFICA LAVORO (<?php echo $i+1?>)' name='M'></td>
 										<td style="display: none"><input style="width: 100%" type='submit' value='ELIMINA LAVORO (<?php echo $i+1?>)' name='E'></td>
 									<?php } ?>

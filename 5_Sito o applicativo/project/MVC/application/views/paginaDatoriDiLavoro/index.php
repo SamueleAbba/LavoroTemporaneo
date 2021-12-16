@@ -47,8 +47,8 @@
 								<th style="display: none"> datore </th>
 								<th> lavoratore </th>
 								<th> descrizione </th>
-								<th> tariffaOraria </th>
-								<th> oreDiLavoro </th>
+								<th> tariffa oraria </th>
+								<th> ore di lavoro </th>
 								<th style="display: none"> occupato </th>
 								<th style="display: none"> scaduto </th>
 								<th> modifica </th>

@@ -69,7 +69,7 @@ CREATE TABLE `lavoro` (
   KEY `lavoratore_email` (`lavoratore_email`),
   CONSTRAINT `lavoro_ibfk_1` FOREIGN KEY (`datore_email`) REFERENCES `utente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `lavoro_ibfk_2` FOREIGN KEY (`lavoratore_email`) REFERENCES `utente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,4 +149,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-09 22:34:08
+-- Dump completed on 2021-12-16 16:01:28

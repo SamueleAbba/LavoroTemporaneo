@@ -9,7 +9,7 @@ class DatoriDiLavoro extends Controller{
     function index(){
         require 'application/controller/session.php';
         $session = new Session_model();
-        if($session->isLogged()){
+        if($session->isLogged() && $_SESSION['nomeRuolo'] == 'datore'){
             require 'application/models/datoriDiLavoro_model.php';
             $model = new DatoriDiLavoro_Model();
             $data = $model->getLavoriDatoriDiLavoro();

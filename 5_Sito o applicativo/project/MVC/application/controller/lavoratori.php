@@ -9,7 +9,7 @@ class Lavoratori extends Controller{
     function index(){
         require 'application/controller/session.php';
         $session = new Session_model();
-        if($session->isLogged()){
+        if($session->isLogged() && $_SESSION['nomeRuolo'] == 'lavoratore'){
             require 'application/models/lavoratori_model.php';
             $model = new Lavoratori_Model();
             $data = $model->getRischiesteLavori();

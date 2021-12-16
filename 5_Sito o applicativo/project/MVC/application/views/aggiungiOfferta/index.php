@@ -39,11 +39,11 @@
 			<input name="descrizione" type="textarea" size="50" value="Descrizione">
 			<br>
 
-			<label>TariffaOraria</label><br>
+			<label>Tariffa oraria</label><br>
 			<input name="tariffaOraria" type="number" size="50" value="0" min="0" max="100">
 			<br>
 
-			<label>OreDiLavoro</label><br>
+			<label>Ore di lavoro</label><br>
 			<input name="oreDiLavoro" type="number" size="50" value="0" min="0" max="100">
 			<br>
 

@@ -12,10 +12,6 @@ require 'application/libs/Controller.php';
 
 require 'application/libs/Model.php';
 
-require 'application/libs/Database.php';
-
-require 'application/libs/Session.php';
-
 // faccio partire l'applicazione
 $app = new Application();
 ?>

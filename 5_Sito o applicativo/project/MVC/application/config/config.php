@@ -15,18 +15,4 @@ $dir = str_replace('\\','/',getcwd().'/');
 $final = $actual_link.str_replace($documentRoot,'',$dir);
 define('URL', $final);
 
-/**
- * Configurazione di : connessione al database del progetto
- */
-/*
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "lavoro_temporaneo";
-$conn = new mysqli($servername, $username, $password, $dbname);
-if($conn->connect_error){
-	die("Database connection non ok: " . $conn->connect_error);
-}
-*/
-
 ?>
