@@ -92,7 +92,7 @@ class Lavoratori_Model extends Model{
 
     /*
     * Il metodo inviaEmailDiConferma, della classe Lavoratori_Model permette di 
-    * inviare una email di conferma all'utente quandio accetta un lavoro.
+    * inviare una email di conferma all'utente quando accetta un lavoro.
     */
     function inviaEmailDiConferma($email, $titolo){
 		$to_email = $email;

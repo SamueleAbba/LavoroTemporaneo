@@ -1,0 +1,4 @@
+Amministratore		samuele.abba@samtrevano.ch	Abcd1234!
+Datore di lavoro	miro.joos@samtrevano.ch		miro1234!
+Lavoratore		gioele.cavallo@samtrevano.ch	gioele1234!
+...
