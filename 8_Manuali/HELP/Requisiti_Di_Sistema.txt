@@ -1,4 +1,0 @@
-XAMPP (Apache, MySQL, Php e Perl) e VC16	versione: dalla 7 in su
-Firefox/Google					versione: ultima versione disponibile online
-notepad/notepad++				versione: ultima versione disponibile online
-MySQL Workbench					versione: ultima versione disponibile online
